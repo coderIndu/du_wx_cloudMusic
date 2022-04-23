@@ -3,13 +3,13 @@
 <view class="video-item">
   <view class="cover">
     <image wx:if="{{item.cover}}" class="cover-img" src="{{item.cover}}"></image>
-    <image class="icon" src="/assets/images/icons/play_icon.png"></image>
-    <view class="info">
-      <view class="count">{{format.formatCount(item.playCount)}}</view>
-      <view class="duration">{{format.formatDuration(item.mv.videos[0].duration)}}</view>
+    <image class="cover-icon" src="/assets/images/icons/play_icon.png"></image>
+    <view class="cover-info">
+      <view class="cover-info-count">{{format.formatCount(item.playCount)}}</view>
+      <view class="cover-info-duration">{{format.formatDuration(item.mv.videos[0].duration)}}</view>
     </view>
   </view>
-  <view class="name">{{item.name}} - <text class="artistName">{{item.artistName}}</text></view>
+  <view class="name">{{item.name}} - <text class="name-artistName">{{item.artistName}}</text></view>
   <view class="play-info">
     
   </view>

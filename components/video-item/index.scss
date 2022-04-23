@@ -1,0 +1,67 @@
+/* components/video-item/index.wxss */
+.video-item {
+  width: 100%;
+  margin: 12rpx 0;
+  height: 285rpx;
+  box-shadow: 1rpx 1rpx 1rpx rgb(212, 211, 211);
+  border-radius: 10rpx;
+}
+
+/* cover部分 */
+.cover {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  // 图标
+  &-icon {
+    position: absolute;
+    left: 10rpx;
+    bottom: 19rpx;
+    width: 25rpx;
+    height: 20rpx;
+  }
+  // 封面
+  &-img {
+    width: 100%;
+    height: 200rpx;
+    margin: 0 auto;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+  }
+  // 视频播放信息
+  &-info {
+    position: absolute;
+    left: 8rpx;
+    bottom: 17rpx;
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    font-size: 20rpx;
+    color: #ffffff;
+    margin-left: 32rpx;
+  }
+}
+
+/* name部分 */
+.name {   /* 设置多行文本超出显示省略号 */
+  width: 99%;
+  display: -webkit-box;   /* 弹性伸缩盒子 */
+  -webkit-box-orient: vertical;  /* 排列方式  */
+  -webkit-line-clamp: 2;   /* 限制在一个块元素显示的文本的行数 */
+  box-sizing: border-box;
+  padding: 0 10rpx 5rpx 10rpx;
+  margin-top: 5rpx;
+  font-size: 20rpx;
+  font-weight: 550;
+  text-overflow:ellipsis;  /* 文字溢出显示省略号 */
+  overflow: hidden;
+  line-height: 35rpx;
+  background-color: #fff;
+  // border-bottom-left-radius: 10rpx;
+  // border-bottom-right-radius: 10rpx;
+  &-artistName {  /* 设置演唱者 */
+    font-size: 20rpx;
+    color: rgb(82, 78, 78);
+  }
+}
+
