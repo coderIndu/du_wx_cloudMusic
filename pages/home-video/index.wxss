@@ -1,0 +1,15 @@
+/* pages/home-video/index.wxss */
+.video {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.item {
+  width: 48%;
+  margin: 0 auto;
+}
