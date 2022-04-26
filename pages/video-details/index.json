@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "video-player": "/components/video-player/index"
+  },
+  "disableScroll": true
+}

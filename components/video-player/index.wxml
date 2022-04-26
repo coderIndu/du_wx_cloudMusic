@@ -1,0 +1,3 @@
+<!--视频播放器组件-->
+<video class="player" show-mute-btn	enable-play-gesture vslide-gesture src="{{mvUrl}}" controls autoplay="true"></video>
+

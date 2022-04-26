@@ -1,0 +1,24 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "video-details",
+          "pathName": "pages/video-details/index",
+          "query": "id=14522271",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
+}

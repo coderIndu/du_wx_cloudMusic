@@ -1,16 +1,16 @@
-<!--components/video-item/index.wxml-->
+<!--视频item组件-->
 <wxs src="/utils/format.wxs" module="format" />
 <view class="video-item">
-  <view class="cover">
+<!-- 封面部分 -->
+  <view class="cover">  
     <image wx:if="{{item.cover}}" class="cover-img" src="{{item.cover}}"></image>
     <image class="cover-icon" src="/assets/images/icons/play_icon.png"></image>
-    <view class="cover-info">
+    <!-- 封面信息 -->
+    <view class="cover-info"> 
       <view class="cover-info-count">{{format.formatCount(item.playCount)}}</view>
       <view class="cover-info-duration">{{format.formatDuration(item.mv.videos[0].duration)}}</view>
     </view>
   </view>
+  <!-- 视频信息 -->
   <view class="name">{{item.name}} - <text class="name-artistName">{{item.artistName}}</text></view>
-  <view class="play-info">
-    
-  </view>
 </view>

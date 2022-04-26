@@ -1,6 +1,6 @@
-<!--pages/home-video/index.wxml-->
+<!--视频tabbar页面-->
 <view class="video">
   <view wx:for="{{mvs}}" wx:key="index" class="item">
-    <video-item item="{{item}}"></video-item>
+    <video-item item="{{item}}" bindtap="vItemClick" data-info="{{item}}"></video-item>
   </view>
 </view>

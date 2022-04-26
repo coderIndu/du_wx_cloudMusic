@@ -1,0 +1,37 @@
+<!--pages/video-details/index.wxml-->
+<wxs src="/utils/format.wxs" module="format"></wxs>
+<view class="detail">
+  <!-- 视频部分 -->
+  <video-player  mvUrl="{{mvUrl}}"></video-player>
+  <!-- 视频信息部分 -->
+  <view class="detail-info">
+    <view class="detail-info-desc">{{mvDetail.name}}</view>
+    <view class="detail-info-name">{{mvDetail.artistName}}</view>
+    <view class="detail-info-play">{{format.formatCount(mvDetail.playCount)}}次播放 - {{mvDetail.publishTime}}</view>
+  </view>
+  <!-- 推荐视频部分 -->
+  <view class="detail-relate">
+    <view class="detail-relate-item" wx:for="{{relatedList}}" wx:key="vid">
+    <!-- 左侧图片部分 -->
+      <view class="detail-relate-left">
+        <image src="{{item.coverUrl}}"></image>
+      </view>
+    <!-- 右侧信息部分 -->
+      <view class="detail-relate-right">
+        <view class="detail-relate-name">{{item.title}}</view>
+        <view class="detail-relate-username">{{item.creator[0].userName}}</view>
+      </view>
+    </view>
+    <view class="detail-relate-item" wx:for="{{relatedList}}" wx:key="vid">
+    <!-- 左侧图片部分 -->
+      <view class="detail-relate-left">
+        <image src="{{item.coverUrl}}"></image>
+      </view>
+    <!-- 右侧信息部分 -->
+      <view class="detail-relate-right">
+        <view class="detail-relate-name">{{item.title}}</view>
+        <view class="detail-relate-username">{{item.creator[0].userName}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -40,7 +40,6 @@ Page({
       stopRefresh()
     })
   }, 
-      
   // 监听下拉
   onPullDownRefresh: function () {
     onRefresh()
@@ -55,5 +54,11 @@ Page({
       this.getData(this.data.mvs.length)
     }
   },
-  
+  // 视频item点击
+  vItemClick: function(event) {
+    const id = event.currentTarget.dataset.info.id
+    wx.navigateTo({
+      url: `/pages/video-details/index?id=${id}`,
+    })
+  }
 })
