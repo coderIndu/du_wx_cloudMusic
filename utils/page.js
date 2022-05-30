@@ -1,3 +1,6 @@
+/**
+ * 添加刷新动画
+ */
 export function onRefresh() {   // 添加刷新动画
   //在当前页面显示导航条加载动画
   wx.showNavigationBarLoading();
@@ -7,6 +10,10 @@ export function onRefresh() {   // 添加刷新动画
   })
 }
 
+/**
+ * 停止显示刷新
+ * @param {Number} timer 显示时间
+ */
 export function stopRefresh(timer=500) {   // 停止刷新
   setTimeout(() => {
     wx.hideLoading({

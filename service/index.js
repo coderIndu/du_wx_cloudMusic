@@ -1,4 +1,4 @@
-const BASE_URL = 'http://114.132.229.173:3000'
+const BASE_URL = 'http://209.141.35.78:4000'
 // 封装请求
 const request = (url, method, data) => {
   return new Promise((resolve, reject) => {
@@ -22,10 +22,26 @@ const post = (url, data) => {
   return request(url, 'POST', data)
 }
 
+/**
+ * 拦截响应,过滤数据
+ * @param {promise} requsest get或post请求
+ */
+function handleRes(requsest) {
+  return new Promise(resolve => {
+    requsest.then(res => {
+      if(res.data.code === 200) {
+        resolve(res.data.data)
+      }
+      resolve(null)
+    })
+  }) 
+}
+
 const http = {
   request: request,
   get: get,
-  post: post
+  post: post,
+  handleRes
 }
 
 export default http

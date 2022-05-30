@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/home-video/index",
     "pages/home-music/index",
+    "pages/home-video/index",
     "pages/video-details/index"
   ],
   "window": {
@@ -27,6 +27,8 @@
       }
     ]
   },
-  "style": "v2",
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index"
+  },
   "sitemapLocation": "sitemap.json"
 }

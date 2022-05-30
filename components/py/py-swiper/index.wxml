@@ -1,0 +1,8 @@
+<!--components/py/py-swiper/index.wxml-->
+<swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 	circular>
+  <block wx:for="{{data}}" wx:key="index">
+    <swiper-item class="swiper-item" bindtap="tap" data-url="{{item.url}}">
+      <image class="img" src="{{item.imgUrl}}" ></image>
+    </swiper-item>
+  </block>
+</swiper>

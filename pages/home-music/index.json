@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "py-search": "/components/py/py-search",
+    "py-swiper": "/components/py/py-swiper"
+  }
 }

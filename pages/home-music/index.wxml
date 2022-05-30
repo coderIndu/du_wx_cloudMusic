@@ -1,2 +1,7 @@
 <!--pages/home-music/index.wxml-->
-<text>pages/home-music/index.wxml</text>
+<!-- 搜索部分 -->
+<py-search bind:change="onChange" bind:search="onSearch"></py-search>
+<!-- 轮播图 -->
+<view class="py-swiper">
+  <py-swiper data="{{swiperData}}" bind:click="swiperTap"></py-swiper>
+</view>

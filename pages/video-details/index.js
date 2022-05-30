@@ -22,6 +22,10 @@ Page({
     this.getData(id)
   },
 
+  /**
+   * 获取视频相关详情
+   * @param {*} id mv的id
+   */
   getData(id) {
     // 获取封面信息
     getMvDetail(id).then(res => {

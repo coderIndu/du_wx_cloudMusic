@@ -1,0 +1,24 @@
+{
+  "name": "du_wx_cloudMusic",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000d\u0000u\u0000_\u0000w\u0000x\u0000_\u0000c\u0000l\u0000o\u0000u\u0000d\u0000M\u0000u\u0000s\u0000i\u0000c\u0000\r\u0000 \u0000",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "@vant/weapp": "^1.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderIndu/du_wx_cloudMusic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderIndu/du_wx_cloudMusic/issues"
+  },
+  "homepage": "https://github.com/coderIndu/du_wx_cloudMusic#readme"
+}
