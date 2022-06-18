@@ -1,4 +1,4 @@
-const BASE_URL = 'http://209.141.35.78:4000'
+const BASE_URL = 'http://114.132.229.173:4000'
 // 封装请求
 const request = (url, method, data) => {
   return new Promise((resolve, reject) => {
@@ -6,7 +6,7 @@ const request = (url, method, data) => {
       url: BASE_URL + url,
       method,
       data,
-      success: res => resolve(res),
+      success: res => resolve(res.data),
       fail: err => reject(err)
     })
   })

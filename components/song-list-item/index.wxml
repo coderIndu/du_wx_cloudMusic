@@ -1,0 +1,9 @@
+<!--components/song-list-item/index.wxml-->
+<view class="song-item">
+  <image src="{{item.al.picUrl}}" class="left"></image>
+  <view class="center">
+    <view class="name">{{item.name}}</view>
+    <text class="singer">{{item.ar[0].name}} · {{item.name}}</text>
+  </view>
+  <van-icon name="arrow" color="#979797" />
+</view>

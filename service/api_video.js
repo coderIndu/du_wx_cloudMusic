@@ -14,7 +14,7 @@ export function getTopMv(offset, limit=10) {
  * @param {number} mvid mv的id
  */
 export function getMvDetail(mvid) {
-  return handleRes(http.get('/mv/detail', {mvid} ))
+  return http.get('/mv/detail', {mvid} )
 }
 
 /**
@@ -22,7 +22,7 @@ export function getMvDetail(mvid) {
  * @param {number} id mv的id
  */
 export function getMvUrl(id) {
-  return handleRes(http.get('/mv/url', {id}))
+  return http.get('/mv/url', {id})
 }
 
 /**
@@ -30,20 +30,5 @@ export function getMvUrl(id) {
  * @param {number} id mv的id 
  */
 export function getRelatedVideo(id) {
-  return handleRes(http.get('/related/allvideo', {id}))
-}
-
-/**
- * 拦截响应,过滤数据
- * @param {promise} requsest get或post请求
- */
-function handleRes(requsest) {
-  return new Promise(resolve => {
-    requsest.then(res => {
-      if(res.data.code === 200) {
-        resolve(res.data.data)
-      }
-      resolve(null)
-    })
-  }) 
+  return http.get('/related/allvideo', {id})
 }

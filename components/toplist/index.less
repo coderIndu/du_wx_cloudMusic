@@ -1,0 +1,50 @@
+/* components/toplist/index.wxss */
+@import '/common/css/index.less';
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ebebeb;
+  border-radius: 15rpx;
+  overflow: hidden;
+  height: 260rpx;
+  width: 100%;
+  margin: 20rpx 0;
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    margin: 20rpx 0 20rpx 20rpx;
+
+    .title {
+      font-size: 40rpx;
+      font-weight: bold;
+      margin-bottom: 10rpx;
+    }
+    .item {
+      font-size: 26rpx;
+      font-weight: 500;
+      .one-line();
+      .singer {
+        color: #b1b1b1;
+      }
+      // margin-top: 10rpx;
+    }
+  }
+
+  .right {
+    width: 250rpx;
+    height: 100%;
+    position: relative;
+    // background-color: #f00;
+    .img {
+      width: 100%;
+      height: 100%;
+    }
+    .count {
+      .count-shadow();
+      // z-index: 999;
+    }
+  }
+}

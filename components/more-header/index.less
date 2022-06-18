@@ -1,0 +1,30 @@
+/* components/more-header/index.wxss */
+.more-header {
+  margin: 20rpx 0;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    font-weight: 600;
+  }
+  
+  .right {
+    display: none;
+  }
+  
+}
+
+
+.right .text, .slot {
+  font-weight: bold;
+  color: #979797;
+  margin-right: 14rpx;
+  font-size: 32rpx;
+}
+
+/* 设置插槽与默认互斥 */
+.slot:empty + .right {
+  display: flex;
+}

@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "py-search": "/components/py/py-search",
-    "py-swiper": "/components/py/py-swiper"
+    "py-swiper": "/components/py/py-swiper",
+    "more-header": "/components/more-header",
+    "song-list-item": "/components/song-list-item",
+    "song-menu": "/components/song-menu",
+    "top-list": "/components/toplist"
   }
 }

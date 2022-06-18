@@ -1,7 +1,20 @@
 <!--pages/home-music/index.wxml-->
-<!-- 搜索部分 -->
+<!-- 搜索 -->
 <py-search bind:change="onChange" bind:search="onSearch"></py-search>
 <!-- 轮播图 -->
 <view class="py-swiper">
   <py-swiper data="{{swiperData}}" bind:click="swiperTap"></py-swiper>
 </view>
+<!-- 推荐歌曲 -->
+<more-header></more-header>
+<block wx:for="{{hotMenu}}" wx:key="id">
+  <song-list-item item="{{item}}"></song-list-item>
+</block>
+<!-- 热门/推荐歌单 -->
+<song-menu item="{{hotPlayList}}"></song-menu>
+<song-menu title="推荐歌单" item="{{recommendPlayList}}"></song-menu>
+<!-- 巅峰榜 -->
+<more-header title="巅峰榜"></more-header>
+<block wx:for="{{listOfAll}}" wx:key="name">
+  <top-list data="{{item}}"></top-list>
+</block>

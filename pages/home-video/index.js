@@ -23,9 +23,9 @@ Page({
    
   getData(offset = 0) {   // 获取mv数据
     getTopMv(offset).then(res => {
-      if (res.data.code === 200) {
+      if (res.code === 200) {
         let mvs = this.data.mvs
-        mvs.push(...res.data.data)
+        mvs.push(...res.data)
         this.setData({ mvs })
       } else {
         this.setData({over: true})

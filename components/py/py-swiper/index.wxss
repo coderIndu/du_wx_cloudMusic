@@ -1,6 +1,8 @@
 /* components/py/py-swiper/index.wxss */
 .swiper {
   height: 100%;
+  border-radius: 10rpx;
+  overflow: hidden;
 }
 
 .swiper-item {

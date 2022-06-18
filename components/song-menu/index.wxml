@@ -1,0 +1,12 @@
+<!--components/song-menu/index.wxml-->
+<view class="song-menu">
+  <more-header title="{{title}}"></more-header>
+  <scroll-view scroll-x class="container">
+    <block wx:for="{{item}}" wx:key="id">
+      <view class="item">
+        <image class="image" src="{{item.coverImgUrl}}"></image>
+        <view class="info">{{item.name}}</view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

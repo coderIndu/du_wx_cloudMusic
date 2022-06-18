@@ -17,7 +17,6 @@ Page({
   onLoad: function (options) {
     // 获取mvid
     const { id } = options
-    
     // 通过id获取页面数据
     this.getData(id)
   },
@@ -29,15 +28,15 @@ Page({
   getData(id) {
     // 获取封面信息
     getMvDetail(id).then(res => {
-      res !== null && this.setData({mvDetail: res})
+      res.data && this.setData({mvDetail: res.data})
     })
     // 获取视频播放信息
     getMvUrl(id).then(res => {
-      res !== null && this.setData({mvUrl: res.url})
+      res?.data?.url && this.setData({mvUrl: res.data.url})
     })
     // 获取视频推荐列表
     getRelatedVideo(id).then(res => {
-      res !== null && this.setData({relatedList: res})
+      res?.data && this.setData({relatedList: res.data})
     })
   },
  
