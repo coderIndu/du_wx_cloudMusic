@@ -24,6 +24,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    leftClick() {
+      // console.log(233);
+      this.triggerEvent('leftClick')
+    }
   }
 })

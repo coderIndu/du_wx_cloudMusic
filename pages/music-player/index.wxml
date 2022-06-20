@@ -1,12 +1,12 @@
 <!--pages/music-player/index.wxml-->
 <view class="player">
   <!-- 背景 -->
-  <image class="back-img" mode="aspectFill" src="http://p3.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg"></image>
+  <image class="back-img" mode="aspectFill" src="{{currentData.al.picUrl}}"></image>
   <!-- 虚化 -->
   <view class="back-blur"></view>
   <!-- nav部分 -->
   <view class="nav">
-    <nav-bar>
+    <nav-bar bind:leftClick="backToPre">
       <view slot="center" class="center">
         <text class="{{currentPage === 0 ? 'active':''}}">歌曲</text>
         <text class="division">|</text>
@@ -15,13 +15,13 @@
     </nav-bar>
   </view>
   <!-- 页面轮播部分 -->
-  <swiper class="swiper">
+  <swiper class="swiper" bind:change="pageChange">
     <swiper-item class="music">
-      <image class="cover" src="http://p3.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg" mode="widthFix"></image>
+      <image class="cover" src="{{currentData.al.picUrl}}" mode="widthFix"></image>
       <view class="info">
-        <view class="name">孤勇者</view>
-        <view class="title">孤勇者</view>
-        <view class="title">孤勇者</view>
+        <view class="name">{{currentData.name}}</view>
+        <view class="title">{{currentData.al.name}}</view>
+        <view class="title">专辑：{{currentData.alia[0]}}</view>
       </view>
       <view class="lyric">我是歌词</view>
       <!-- 进度条 -->

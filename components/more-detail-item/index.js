@@ -1,4 +1,5 @@
 // components/more-detail-item/index.js
+
 Component({
   /**
    * 组件的属性列表
@@ -25,6 +26,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goToDetail() {
+      const id = this.properties.data.id
+      wx.navigateTo({
+        url: '/pages/music-player/index?id=' + this.properties.data.id,
+      })
+    }
   }
 })

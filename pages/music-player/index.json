@@ -1,6 +1,7 @@
 {
   "navigationBarTextStyle": "white",
   "navigationStyle": "custom",
+  "disableScroll": true,
   "usingComponents": {
     "nav-bar": "/components/nav-bar"
   }

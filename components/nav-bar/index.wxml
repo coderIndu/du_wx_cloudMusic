@@ -1,6 +1,6 @@
 <!--components/nav-bar/index.wxml-->
 <view class="nav-bar" style="margin-top: {{statusBarHeight}}px;height: {{44}}px;">
-  <view class="left">
+  <view class="left" bindtap="leftClick">
     <view class="left-slot">
       <slot name="left"></slot>
     </view>
