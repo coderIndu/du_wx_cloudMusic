@@ -1,0 +1,40 @@
+<!--pages/more-detail/cpns/cover/index.wxml-->
+<wxs src="/utils/format.wxs" module="format"></wxs>
+<view class="cover">
+  <!-- 背景图 -->
+  <image class="back-img" src="{{data.coverImgUrl}}" mode="aspectFill"></image>
+  <!-- 遮罩 -->
+  <view class="mask"></view>
+  <!-- 封面信息 -->
+  <view class="content">
+    <!-- 上方信息部分 -->
+    <view class="top">
+      <!-- 左侧图片 -->
+      <image class="left" src="{{data.coverImgUrl}}" mode="aspectFill"></image>
+      <!-- 右侧内容 -->
+      <view class="right">
+        <!-- 歌单简介 -->
+        <view class="name">{{data.name}}</view>
+        <view class="icon">
+          <!-- 创建者头像 -->
+          <image class="avatar" src="{{data.creator.avatarUrl}}" mode="widthFix"></image>
+          <!-- 创建者名称 -->
+          <text class="nickname">{{data.creator.nickname}}</text>
+        </view>
+        <!-- 简介 -->
+        <view class="desc" wx:if="{{data.description}}">简介：{{data.description}}</view>
+      </view>
+    </view>
+    <!-- 下方操作部分 -->
+    <view class="bottom" wx:if="{{data.playCount}}">
+      <view class="collect">
+        <image class="icon" mode="widthFix" src="/assets/images/icons/favor_icon.png"></image>
+        <text class="text">{{format.formatCount(data.playCount)}}</text>
+      </view>
+      <view class="share">
+        <image class="icon" mode="widthFix" src="/assets/images/icons/share_icon.png"></image>
+        <text class="text">分享</text>
+      </view>
+    </view>
+  </view>
+</view>

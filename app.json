@@ -2,7 +2,9 @@
   "pages": [
     "pages/home-music/index",
     "pages/home-video/index",
-    "pages/video-details/index"
+    "pages/video-details/index",
+    "pages/more-detail/index",
+    "pages/search-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,7 +10,7 @@ page {
 /* 轮播图样式 */
 .py-swiper {
   width: 100%;
-  height: 270rpx;
+  height: 320rpx;
   margin-top: 10rpx;
 }
 

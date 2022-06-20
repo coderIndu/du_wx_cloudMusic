@@ -1,0 +1,10 @@
+<!--pages/more-detail/index.wxml-->
+<view class="more-detail">
+  <!-- <more-header title="{{songsList.name}}" showMore="{{false}}"></more-header> -->
+  <!-- 封面部分 -->
+  <detail-cover data="{{songsList}}"></detail-cover>
+  <!-- 歌曲列表 -->
+  <block wx:for="{{songsList.tracks}}" wx:key="id">
+    <more-detail-item data="{{item}}" index="{{index+1}}"></more-detail-item>
+  </block>
+</view>

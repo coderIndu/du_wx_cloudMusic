@@ -1,0 +1,14 @@
+<!--components/more-detail-item/index.wxml-->
+<view class="item">
+  <!-- 序号 -->
+  <view class="index">{{index}}</view>
+  <!-- 歌曲信息 -->
+  <view class="info">
+    <view class="title">{{data.name}}</view>
+    <view class="author">
+      <image class="icon" src="/assets/images/icons/sq_icon.png" mode="widthFix"></image>
+      <text class="desc">{{data.ar[0].name}}</text>
+      <text class="desc" wx:if="{{data.alia[0]}}">·{{data.alia[0]}}</text>
+    </view>
+  </view>
+</view>

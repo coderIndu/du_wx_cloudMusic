@@ -8,6 +8,13 @@
           "query": "id=14522271",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/search-detail/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

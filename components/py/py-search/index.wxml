@@ -1,2 +1,2 @@
 <!--components/py/py-search/index.wxml-->
-<van-search model:value="{{ value }}"  shape="round"  placeholder="请输入搜索关键词" bind:change="onChange" bind:search="onSearch"/>
+<van-search model:value="{{ value }}"  shape="round"  placeholder="{{placeholder}}" bind:change="onChange" bindtap="click"/>

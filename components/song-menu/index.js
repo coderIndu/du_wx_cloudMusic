@@ -25,6 +25,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-  }
+    click(event) {
+      const { id } = event.currentTarget.dataset
+      this.triggerEvent("click", id)
+    }
+   }
 })

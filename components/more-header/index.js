@@ -29,6 +29,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    click() {   // 点击更多触发事件
+      this.triggerEvent("click")
+    }
   }
 })

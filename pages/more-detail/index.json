@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "more-header": "/components/more-header",
+    "more-detail-item": "/components/more-detail-item",
+    "detail-cover": "./cpns/cover"
+  }
+}

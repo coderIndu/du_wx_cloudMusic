@@ -4,14 +4,17 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    placeholder: {
+      type: String,
+      value: '请输入搜索关键词'
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    value: ""
+    value: "",
   },
 
   /**
@@ -21,8 +24,8 @@ Component({
     onChange: function() {
       this.triggerEvent('change', this.data.value)
     },
-    onSearch: function() {
-      this.triggerEvent('search', this.data.value)
-    }
+    click: function() {
+      this.triggerEvent('click')
+    },
   }
 })

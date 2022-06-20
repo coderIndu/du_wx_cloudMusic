@@ -1,0 +1,107 @@
+/* pages/more-detail/cpns/cover/index.wxss */
+@import '/common/css/index.less';
+
+.absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+// 封面
+.cover {
+  width: 100vw;
+  height: 450rpx;
+  position: relative;
+  left: -20rpx;
+  .back-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    // filter: blur(10rpx);
+  }
+
+  // 遮罩
+  .mask {
+    .absolute();
+    .back-blur();
+  }
+
+  // 主要显示
+  .content {
+    .absolute();
+    width: 100vw;
+    padding: 50rpx;
+    padding-bottom: 0rpx;
+    box-sizing: border-box;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+
+  .top {
+    display: flex;
+    // 左侧图片
+    .left {
+      width: 200rpx;
+      height: 200rpx;
+      border-radius: 10rpx;
+      margin-right: 40rpx;
+    }
+    // 右侧内容
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color:  #fff;
+      overflow: hidden;
+      
+      // 介绍
+      .name {
+        font-size: 36rpx;
+        .two-line();
+      }
+
+      // 小头像部分
+      .icon {
+        display: flex;
+        align-items: center;
+        .avatar {
+          width: 50rpx;
+          height: 50rpx;
+          border-radius: 50%;
+          margin-right: 20rpx;
+        }
+        .nickname {
+          font-size: 26rpx;
+        }
+      }
+      
+      // 简介
+      .desc {
+        font-size: 25rpx;
+        .one-line();
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    .collect, .share {
+      display: flex;
+      align-items: center;
+      color: #f6f6f6;
+      .icon {
+        width: 50rpx;
+        height: auto;
+        margin-right: 10rpx;
+      }
+    }
+  }
+}

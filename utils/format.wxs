@@ -4,7 +4,6 @@
  * @return 返回处理后的字符串
  */
 function formatCount(count) {  
-  
   var counter = parseInt(count)
   if(counter > 1000000000) { // 数量大于一亿
     return (counter / 1000000000).toFixed(1) + '亿'

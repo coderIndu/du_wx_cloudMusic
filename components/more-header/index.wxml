@@ -2,8 +2,8 @@
 <view class="more-header">
   <view class="left">{{title}}</view>
   <view class="slot"><slot></slot></view>
-  <view class="right" wx:if="{{showMore}}">
+  <view class="right" wx:if="{{showMore}}" bindtap="click">
     <text class="text">{{moreText}}</text>
-    <van-icon name="arrow" color="#979797" />
+    <van-icon name="arrow" color="#979797"  />
   </view>
 </view>

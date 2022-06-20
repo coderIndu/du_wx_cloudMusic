@@ -10,13 +10,13 @@ Page({
    */
   data: {
     swiperData: [],
-    hotMenu: [],       // 推荐歌曲
+    hotMenu: {},       // 推荐歌曲
     hotPlayList: {},   // 热门歌单
     recommendPlayList: {}, // 推荐歌单
-    listOfAll: {       // 所有榜单
-      "newMenu": {},
-      "originMenu": {},
-      "upMenu": {}
+    listOfAll: {           // 所有榜单
+      "newMenu": {},       // 新歌榜
+      "originMenu": {},    // 原创榜
+      "upMenu": {}         // 飙升榜
     },      
   },
 
@@ -24,11 +24,10 @@ Page({
     this.getSwiperData()
     this.getPlayListData()
   },
-  onChange: function(value) {   // 搜索框内容改变函数
-    console.log(111, value.detail)
-  },
-  onSearch: function(value) {  // 点击搜索
-    console.log(21111, value.detail)
+  searchClick() {  // 点击搜索栏
+    wx.navigateTo({
+      url: '/pages/search-detail/index',
+    })
   },
   getSwiperData() {     // 获取轮播图数据
     getSwiper().then(res => {
@@ -48,7 +47,7 @@ Page({
   swiperTap(value) {       // 点击轮播图
     console.log(2333, value.detail.url)
   },
-  getPlayListData() {
+  getPlayListData() {      // 获取歌单数据
     getPlayList("流行").then(res => {
       this.setData({hotPlayList: res.playlists})
     })
@@ -62,9 +61,19 @@ Page({
       let {coverImgUrl, name, playCount, tracks} = res
       tracks = tracks.slice(0, 3)
       const newList = { coverImgUrl, name, playCount, tracks}
-
       this.setData({[`listOfAll.${type}`]: newList})
     }
+  },
+  moreClick(event) {      // 点击更多跳转到详情页
+    const id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/more-detail/index?id=${id}`,
+    })
+  },
+  songMenuClick({detail: id}) {
+    wx.navigateTo({
+      url: `/pages/more-detail/index?id=${id}`,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,6 +83,13 @@ Page({
     // 获取榜单数据
     store.dispatch("getSongMenuAction")
     // 处理数据
+    store.onState('hotMenu', res => {
+      if(Object.keys(res).length === 0) return
+      let {coverImgUrl, name, playCount, tracks} = res
+      tracks = res.tracks.slice(0, 6)
+      const newList = { coverImgUrl, name, playCount, tracks}
+      this.setData({hotMenu: newList})
+    })
     store.onState('newMenu', this.handlerListState('newMenu'))
     store.onState('originMenu', this.handlerListState('originMenu'))
     store.onState('upMenu', this.handlerListState('upMenu'))

@@ -6,7 +6,7 @@ export function onRefresh() {   // 添加刷新动画
   wx.showNavigationBarLoading();
   //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
   wx.showLoading({
-    title: '刷新中...'
+    title: '加载中...'
   })
 }
 
