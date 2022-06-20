@@ -1,23 +1,24 @@
 <!--pages/search-detail/index.wxml-->
 <view class="search">
-  <py-search bind:change="valueChange" placeholder="{{placeholder}}"></py-search>
+  <py-search value="{{searchValue}}" bind:change="valueChange" placeholder="{{placeholder}}" bind:search="handlerSearch"></py-search>
   <!-- 热门搜索 -->
   <view class="hot" wx:if="{{!searchValue}}">
     <view class="title">热门搜索</view>
     <!-- 热搜tag -->
     <view class="tags">
       <block wx:for="{{hots}}" wx:key="first">
-        <view class="tags-item">{{item.first}}</view>
+        <view class="tags-item" bindtap="itemClick" data-keyword="{{item.first}}">{{item.first}}</view>
       </block>
     </view>
   </view>
   <!-- 联想建议列表 -->
   <view class="suggest" wx:else>
     <view class="title">搜索"{{searchValue}}"</view>
-    <block wx:for="{{suggestList}}" wx:key="index">
-      <view class="item">
+    <block wx:for="{{suggestListNodes}}" wx:key="index">
+      <view class="item" bindtap="itemClick" data-keyword="{{suggestList[index]}}">
         <image class="icon" src="/assets/images/icons/search_icon.png" mode="widthFix"></image>
-        <view>{{item.keyword}}</view>
+        <!-- <view>{{item.keyword}}</view> -->
+        <rich-text nodes="{{item}}"></rich-text>
       </view>
     </block>
   </view>

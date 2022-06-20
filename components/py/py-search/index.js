@@ -7,6 +7,10 @@ Component({
     placeholder: {
       type: String,
       value: '请输入搜索关键词'
+    },
+    value: {
+      type: String,
+      value: ''
     }
   },
 
@@ -14,7 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    value: "",
+
   },
 
   /**
@@ -27,5 +31,8 @@ Component({
     click: function() {
       this.triggerEvent('click')
     },
+    onSearch() {
+      this.triggerEvent('search')
+    }
   }
 })
