@@ -1,6 +1,6 @@
 <!--pages/search-detail/index.wxml-->
 <view class="search">
-  <py-search value="{{searchValue}}" bind:change="valueChange" placeholder="{{placeholder}}" bind:search="handlerSearch"></py-search>
+  <van-search model:value="{{searchValue}}" bind:change="valueChange" placeholder="{{placeholder}}" bind:search="handlerSearch" shape="round" show-action="{{searchValue}}"></van-search>
   <!-- 热门搜索 -->
   <view class="hot" wx:if="{{!searchValue}}">
     <view class="title">热门搜索</view>
@@ -12,7 +12,7 @@
     </view>
   </view>
   <!-- 联想建议列表 -->
-  <view class="suggest" wx:else>
+  <view class="suggest" wx:if="{{searchValue && !searchSongs.length}}">
     <view class="title">搜索"{{searchValue}}"</view>
     <block wx:for="{{suggestListNodes}}" wx:key="index">
       <view class="item" bindtap="itemClick" data-keyword="{{suggestList[index]}}">
@@ -22,4 +22,11 @@
       </view>
     </block>
   </view>
+  <!-- 最佳匹配 -->
+  <scroll-view scroll-y class="search-list" wx:if="{{searchSongs.length}}">
+    <view class="title">最佳匹配</view>
+    <block wx:for="{{searchSongs}}" wx:key="index">
+      <more-detail-item data="{{item}}" index="{{index+1}}"></more-detail-item>
+    </block>
+  </scroll-view >
 </view>

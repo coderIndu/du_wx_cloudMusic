@@ -7,8 +7,8 @@
     <view class="title">{{data.name}}</view>
     <view class="author">
       <image class="icon" src="/assets/images/icons/sq_icon.png" mode="widthFix"></image>
-      <text class="desc">{{data.ar[0].name}}</text>
-      <text class="desc" wx:if="{{data.alia[0]}}">·{{data.alia[0]}}</text>
+      <text class="desc">{{data.ar[0].name || data.artists[0].name}}</text>
+      <text class="desc" wx:if="{{data.alia[0] || data.alias[0]}}">·{{data.alia[0] || data.alias[0]}}</text>
     </view>
   </view>
 </view>

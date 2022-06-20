@@ -1,0 +1,15 @@
+<!--components/nav-bar/index.wxml-->
+<view class="nav-bar" style="margin-top: {{statusBarHeight}}px;height: {{44}}px;">
+  <view class="left">
+    <view class="left-slot">
+      <slot name="left"></slot>
+    </view>
+    <van-icon class="left-icon" size="{{20}}" name="arrow-left" />
+  </view>
+  <view class="center">
+    <view class="center-slot">
+      <slot name="center"></slot>
+    </view>
+    <text class="center-title">{{title}}</text>
+  </view>
+</view>

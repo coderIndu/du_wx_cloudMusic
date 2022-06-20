@@ -1,0 +1,46 @@
+<!--pages/music-player/index.wxml-->
+<view class="player">
+  <!-- 背景 -->
+  <image class="back-img" mode="aspectFill" src="http://p3.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg"></image>
+  <!-- 虚化 -->
+  <view class="back-blur"></view>
+  <!-- nav部分 -->
+  <view class="nav">
+    <nav-bar>
+      <view slot="center" class="center">
+        <text class="{{currentPage === 0 ? 'active':''}}">歌曲</text>
+        <text class="division">|</text>
+        <text class="{{currentPage === 1 ? 'active':''}}">歌词</text>
+      </view>
+    </nav-bar>
+  </view>
+  <!-- 页面轮播部分 -->
+  <swiper class="swiper">
+    <swiper-item class="music">
+      <image class="cover" src="http://p3.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg" mode="widthFix"></image>
+      <view class="info">
+        <view class="name">孤勇者</view>
+        <view class="title">孤勇者</view>
+        <view class="title">孤勇者</view>
+      </view>
+      <view class="lyric">我是歌词</view>
+      <!-- 进度条 -->
+      <view class="slider">
+        <slider block-size="{{12}}" style="width: 100%;margin-left: 14rpx;"></slider>
+        <view class="time"> 
+          <view class="currentTime">01:33</view>
+          <view class="totalTime">04:30</view>
+        </view>
+      </view>
+      <!-- 控制栏 -->
+      <view class="control">
+        <image class="icon" mode="widthFix" src="/assets/images/player/play_random.png"></image>
+        <image class="icon change" mode="widthFix" src="/assets/images/player/play_prev.png"></image>
+        <image class="icon play" mode="widthFix" src="/assets/images/player/play_pause.png"></image>
+        <image class="icon change" mode="widthFix" src="/assets/images/player/play_next.png"></image>
+        <image class="icon" mode="widthFix" src="/assets/images/player/play_order.png"></image>
+      </view>
+    </swiper-item>
+    <swiper-item>2</swiper-item>
+  </swiper>
+</view>

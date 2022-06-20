@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "py-search": "/components/py/py-search"
+    "more-detail-item": "/components/more-detail-item"
   }
 }

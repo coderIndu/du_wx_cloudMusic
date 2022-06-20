@@ -2,10 +2,8 @@
 App({
   onLaunch() {
     // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    const storage = wx.getSystemInfoSync()
+    this.globalData.statusBarHeight = storage.statusBarHeight
     // 登录
     wx.login({
       success: res => {
@@ -14,7 +12,7 @@ App({
     })
   },
   globalData: {
-    userInfo: '233'
+    statusBarHeight: 44
   },
 
 })

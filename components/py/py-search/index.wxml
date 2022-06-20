@@ -1,2 +1,2 @@
 <!--components/py/py-search/index.wxml-->
-<van-search model:value="{{ value }}"  shape="round"  placeholder="{{placeholder}}" bind:change="onChange" bind:search="onSearch" bindtap="click"/>
+<van-search model:value="{{ value }}" shape="round"  placeholder="{{placeholder}}" bind:change="onChange" bind:search="onSearch" bindtap="click"/>

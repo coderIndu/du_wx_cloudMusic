@@ -1,5 +1,5 @@
 <!--components/song-list-item/index.wxml-->
-<view class="song-item">
+<view class="song-item" bindtap="playClick">
   <image src="{{item.al.picUrl}}" class="left"></image>
   <view class="center">
     <view class="name">{{item.name}}</view>

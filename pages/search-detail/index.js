@@ -22,6 +22,7 @@ Page({
     if(!this.data.searchValue.length) {
       this.setData({suggestList: []})
       this.setData({suggestListNodes: []})
+      this.setData({searchSongs: []})
       return
     }
     getSearchSuggest_debounce(this.data.searchValue).then(res => {

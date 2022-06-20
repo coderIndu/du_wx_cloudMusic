@@ -1,0 +1,28 @@
+/* components/nav-bar/index.wxss */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+
+  .left, .right {
+    .left-slot:empty + .left-icon {
+      display: block;
+    }
+    .left-icon {
+      display: none;
+    }
+  }
+
+  .center {
+    flex: 1;
+    font-size: 30rpx;
+    // margin-right: 100rpx;
+    .center-slot:empty + .center-title {
+      display: block;
+    }
+    .center-title {
+      display: none;
+    }
+  }
+}
