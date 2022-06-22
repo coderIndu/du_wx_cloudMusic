@@ -32,7 +32,7 @@ function addZero(time) {
 function formatDuration(duration) {
   duration = duration / 1000  // 转换为秒
   var minute = Math.floor(duration / 60)  // 获取分
-  var second = Math.floor(duration) % 60
+  var second = Math.floor(duration) % 60  // 获取秒
   minute = addZero(minute)
   second = addZero(second)
   return minute + ':' + second

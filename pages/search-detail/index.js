@@ -20,9 +20,7 @@ Page({
   valueChange({detail}) {
     this.setData({searchValue: detail})
     if(!this.data.searchValue.length) {
-      this.setData({suggestList: []})
-      this.setData({suggestListNodes: []})
-      this.setData({searchSongs: []})
+      this.setData({suggestList: [], suggestListNodes: [], searchSongs: []})
       return
     }
     getSearchSuggest_debounce(this.data.searchValue).then(res => {

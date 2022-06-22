@@ -1,4 +1,5 @@
 <!--pages/music-player/index.wxml-->
+
 <view class="player">
   <!-- 背景 -->
   <image class="back-img" mode="aspectFill" src="{{currentData.al.picUrl}}"></image>
@@ -8,39 +9,34 @@
   <view class="nav">
     <nav-bar bind:leftClick="backToPre">
       <view slot="center" class="center">
-        <text class="{{currentPage === 0 ? 'active':''}}">歌曲</text>
+        <text bindtap="navClick" data-index="{{0}}" class="{{currentPage === 0 ? 'active':''}}">歌曲</text>
         <text class="division">|</text>
-        <text class="{{currentPage === 1 ? 'active':''}}">歌词</text>
+        <text bindtap="navClick" data-index="{{1}}" class="{{currentPage === 1 ? 'active':''}}">歌词</text>
       </view>
     </nav-bar>
   </view>
   <!-- 页面轮播部分 -->
-  <swiper class="swiper" bind:change="pageChange">
+  <swiper current="{{currentPage}}" class="swiper" bind:change="pageChange">
     <swiper-item class="music">
+      <!-- 封面和歌曲信息 -->
       <image class="cover" src="{{currentData.al.picUrl}}" mode="widthFix"></image>
       <view class="info">
         <view class="name">{{currentData.name}}</view>
-        <view class="title">{{currentData.al.name}}</view>
+        <view class="title">{{currentData.ar[0].name}}</view>
         <view class="title">专辑：{{currentData.alia[0]}}</view>
       </view>
-      <view class="lyric">我是歌词</view>
+      <view class="lyric">{{currentLyric}}</view>
       <!-- 进度条 -->
-      <view class="slider">
-        <slider block-size="{{12}}" style="width: 100%;margin-left: 14rpx;"></slider>
-        <view class="time"> 
-          <view class="currentTime">01:33</view>
-          <view class="totalTime">04:30</view>
-        </view>
-      </view>
+      <player-slider bind:sliderChange="sliderChange" bind:click="onSliderclick" currentTime="{{currentTime}}" totalTime="{{totalTime}}"></player-slider>
       <!-- 控制栏 -->
-      <view class="control">
-        <image class="icon" mode="widthFix" src="/assets/images/player/play_random.png"></image>
-        <image class="icon change" mode="widthFix" src="/assets/images/player/play_prev.png"></image>
-        <image class="icon play" mode="widthFix" src="/assets/images/player/play_pause.png"></image>
-        <image class="icon change" mode="widthFix" src="/assets/images/player/play_next.png"></image>
-        <image class="icon" mode="widthFix" src="/assets/images/player/play_order.png"></image>
-      </view>
+      <player-control bind:preClick="preClick" bind:nextClick="nextClick"></player-control>
     </swiper-item>
-    <swiper-item>2</swiper-item>
+    <swiper-item class="lyrics">
+      <scroll-view scroll-with-animation scroll-y class="scroll" scroll-top="{{currentIndex * 20}}">
+        <block wx:for="{{lyrics}}" wx:key="index">
+          <view class="item {{currentIndex === index ? 'active': ''}}">{{item.text}}</view>
+        </block>
+      </scroll-view>
+    </swiper-item>
   </swiper>
 </view>

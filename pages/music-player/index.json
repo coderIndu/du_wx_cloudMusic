@@ -3,6 +3,8 @@
   "navigationStyle": "custom",
   "disableScroll": true,
   "usingComponents": {
-    "nav-bar": "/components/nav-bar"
+    "nav-bar": "/components/nav-bar",
+    "player-slider": "./cpns/slider",
+    "player-control": "./cpns/control"
   }
 }

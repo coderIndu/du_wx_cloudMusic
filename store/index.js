@@ -13,7 +13,8 @@ const store = new HYEventStore({
     newMenu: [],
     originMenu: [],
     hotMenu: [],
-    name: ''
+    // 播放
+    songsList: [],  // 播放的歌曲列表
   },
   action: {
     getName(ctx) {

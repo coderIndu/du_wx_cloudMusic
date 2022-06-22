@@ -36,3 +36,12 @@
   background-color: rgba(0,0,0, .5);
   backdrop-filter: blur(5px);
 }
+
+// 去除滚动条
+.clear-scroll {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
+}

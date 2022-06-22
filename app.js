@@ -1,4 +1,5 @@
 // app.js
+console.log();
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -12,7 +13,7 @@ App({
     })
   },
   globalData: {
-    statusBarHeight: 44
+    statusBarHeight: 0,
   },
 
 })

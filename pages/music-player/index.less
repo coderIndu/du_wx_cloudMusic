@@ -36,60 +36,65 @@
 // 页面部分
 .swiper {
   flex: 1;
-  
+  // 歌曲页面
   .music {
     display: flex;
     flex-direction: column;
     padding-top: 30rpx;
     padding-bottom: 50rpx;
     box-sizing: border-box;
+    overflow: hidden;
     // 封面部分
     .cover {
       width: 100%;
       height: auto;
       flex: 3;
+      border-radius: 10rpx;
     }
     // 信息部分
     .info {
-      margin: 20rpx 0;
+      margin: 40rpx 0;
       font-size: 40rpx;
       font-weight: 550;
       .title {
         margin: 20rpx 0;
-        font-size: 24rpx;
+        font-size: 26rpx;
         color: #ccc;
         font-weight: normal;
       }
     }
     // 歌词部分
     .lyric {
-      text-align: center;
       flex: 1;
       margin: 20rpx;
-    }
-    // 进度条
-    .slider {
-      .time {
-        display: flex;
-        justify-content: space-between;
-        font-size: 24rpx;
-      }
-    }
-    // 控制栏
-    .control {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      .icon {
-        width: 70rpx;
-        height: auto;
+      justify-content: center;
+      color: #53eb53;
+    }
+  }
+  // 歌词页面
+  .lyrics {
+    .scroll {
+      height: 100%;
+    }
+    // padding: 0 10rpx;
+    text-align: center;
+    .item {
+      height: 35rpx;
+      line-height: 35rpx;
+      margin: 20rpx 0;
+      font-size: 28rpx;
+
+      &:first-of-type{
+        padding-top: 300rpx;
       }
-      .change {
-        width: 70rpx;
+      &:last-of-type  {
+        padding-bottom: 200rpx;
       }
-      .play {
-        width: 100rpx;
-      }
+    }
+    .active {
+      color: #53eb53;
     }
   }
 }

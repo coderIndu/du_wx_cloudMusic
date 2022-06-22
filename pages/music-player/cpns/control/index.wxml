@@ -1,0 +1,8 @@
+<!--pages/music-player/cpns/control/index.wxml-->
+<view class="control">
+  <image class="icon" bindtap="modeClick" mode="widthFix" src="{{modeUrl}}"></image>
+  <image bindtap="preClick" class="icon change" mode="widthFix" src="/assets/images/player/play_prev.png"></image>
+  <image bindtap="playClick" class="icon play" mode="widthFix" src="/assets/images/player/play_{{playIcon}}.png"></image>
+  <image bindtap="nextClick" class="icon change" mode="widthFix" src="/assets/images/player/play_next.png"></image>
+  <image class="icon" mode="widthFix" src="/assets/images/player/play_music.png"></image>
+</view>

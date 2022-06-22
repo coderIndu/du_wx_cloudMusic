@@ -4,7 +4,8 @@ page {
 
 
 .van-search {
-  padding: 10rpx 0 !important;
+  padding: 20rpx 0 !important;
+  padding-top: 30rpx !important;
 }
 
 /* 轮播图样式 */
@@ -14,6 +15,9 @@ page {
   margin-top: 10rpx;
 }
 
-/* .swiper-item {
-  border-radius: 50rpx !important;
-} */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
