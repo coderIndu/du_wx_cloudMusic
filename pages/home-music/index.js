@@ -1,5 +1,6 @@
 // pages/home-music/index.js
 import store from '../../store/index'
+import { audioContent, playStore } from '../../store/audio-player'
 import { getSwiper, getPlayList } from '../../service/api_music'
 
 
@@ -18,6 +19,9 @@ Page({
       "originMenu": {},    // 原创榜
       "upMenu": {}         // 飙升榜
     },      
+    currentData: {},   // 当前播放歌曲
+    currentLyric: '',  // 当前歌词
+    isPlayer: true,      // 歌曲播放状态
   },
 
   getData() {   // 获取数据
@@ -55,7 +59,7 @@ Page({
       this.setData({recommendPlayList: res.playlists})
     })
   },
-  handlerListState(type) {    // 处理榜单数据
+  handleListState(type) {    // 处理榜单数据
     return (res) => {
       if(Object.keys(res).length === 0) return
       let {coverImgUrl, name, playCount, tracks} = res
@@ -71,6 +75,7 @@ Page({
     })
   },
   songMenuClick({detail: id}) {
+    this.setData({currentData: {}})
     wx.navigateTo({
       url: `/pages/more-detail/index?id=${id}`,
     })
@@ -90,15 +95,34 @@ Page({
       const newList = { coverImgUrl, name, playCount, tracks}
       this.setData({hotMenu: newList})
     })
-    store.onState('newMenu', this.handlerListState('newMenu'))
-    store.onState('originMenu', this.handlerListState('originMenu'))
-    store.onState('upMenu', this.handlerListState('upMenu'))
+    store.onState('newMenu', this.handleListState('newMenu'))
+    store.onState('originMenu', this.handleListState('originMenu'))
+    store.onState('upMenu', this.handleListState('upMenu'))
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onShow: function() {
+    playStore.onStates(['currentData', 'currentLyric'], ({currentData, currentLyric }) => {
+      if(currentData) this.setData({currentData})
+      if(currentLyric) this.setData({currentLyric})
+    })
   },
+  // 事件处理
+  handleSongClick(event) {
+    const index = event.currentTarget.dataset.index
+    const menu = this.data.hotMenu.tracks
+    playStore.dispatch("getSongListAction", {index, menu})
+  },
+  playClick() {   // 工具栏播放控制
+    let isPlayer = this.data.isPlayer
+    playStore.onStates(["isPlaying"], ({isPlaying}) => {
+      isPlayer = !isPlaying
+    })
+    this.setData({isPlayer})    // 设置状态图标
+    playStore.dispatch("onControlMusicAction", isPlayer)  // 控制播放
+  },
+  goToMusicDetail() {   // 点击工具栏跳转到歌曲详情
+    console.log(2333);
+    wx.navigateTo({
+      url: '/pages/music-player/index',
+    })
+  }
 })

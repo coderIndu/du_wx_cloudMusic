@@ -1,6 +1,7 @@
 // pages/more-detail/index.js
 import store from '../../store/index'
 import { getSongMenu, getAllSongs } from '../../service/api_music'
+import { playStore } from '../../store/audio-player'
 Page({
 
   /**
@@ -31,6 +32,11 @@ Page({
       this.getMenuData(id)
     }
   },
-
+  // 事件处理
+  handleSongClick(event) {
+    const index = event.currentTarget.dataset.index
+    const menu = this.data.songsList.tracks
+    playStore.dispatch('getSongListAction', {index, menu})
+  }
  
 })

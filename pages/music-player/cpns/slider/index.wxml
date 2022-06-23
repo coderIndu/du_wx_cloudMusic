@@ -1,9 +1,0 @@
-<!--pages/music-player/cpns/slider/index.wxml-->
-<wxs src="/utils/format.wxs" module="format"></wxs>
-<view class="slider">
-  <slider bindchanging="onSliderChanging" value="{{value}}" class="item" bindchange="onSliderClick" block-size="{{12}}"></slider>
-  <view class="time">
-    <view class="currentTime">{{format.formatDuration(currentTime)}}</view>
-    <view class="totalTime">{{format.formatDuration(totalTime)}}</view>
-  </view>
-</view>

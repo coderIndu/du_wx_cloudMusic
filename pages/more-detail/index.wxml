@@ -5,6 +5,6 @@
   <detail-cover data="{{songsList}}"></detail-cover>
   <!-- 歌曲列表 -->
   <block wx:for="{{songsList.tracks}}" wx:key="id">
-    <more-detail-item data="{{item}}" index="{{index+1}}"></more-detail-item>
+    <more-detail-item bindtap="handleSongClick" data-index="{{index}}" data="{{item}}" index="{{index+1}}"></more-detail-item>
   </block>
 </view>

@@ -1,5 +1,5 @@
 <!--pages/music-player/index.wxml-->
-
+<wxs src="/utils/format.wxs" module="format"></wxs>
 <view class="player">
   <!-- 背景 -->
   <image class="back-img" mode="aspectFill" src="{{currentData.al.picUrl}}"></image>
@@ -27,7 +27,13 @@
       </view>
       <view class="lyric">{{currentLyric}}</view>
       <!-- 进度条 -->
-      <player-slider bind:sliderChange="sliderChange" bind:click="onSliderclick" currentTime="{{currentTime}}" totalTime="{{totalTime}}"></player-slider>
+      <view class="slider">
+        <slider value="{{sliderValue}}" bindchanging="onSliderChange" class="item" bindchange="onSliderClick" block-size="{{12}}"></slider>
+        <view class="time">
+          <view class="currentTime">{{format.formatDuration(currentTime)}}</view>
+          <view class="totalTime">{{format.formatDuration(totalTime)}}</view>
+        </view>
+      </view>
       <!-- 控制栏 -->
       <player-control bind:preClick="preClick" bind:nextClick="nextClick"></player-control>
     </swiper-item>

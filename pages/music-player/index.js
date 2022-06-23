@@ -1,7 +1,8 @@
 // pages/music-player/index.js
-import { getSongDetail, getMusicUrl, getLyric } from '../../service/api_player'
-import { audioContent } from '../../store/audio-player'
-import { parseLyric } from '../../utils/parseLyric'
+import { audioContent, playStore } from '../../store/audio-player'
+
+
+
 Page({
   /**
    * 页面的初始数据
@@ -13,6 +14,7 @@ Page({
     currentTime: 0,
     totalTime: 0,
     isSliderChange: false,
+    sliderValue: 0,
     // 歌词部分
     lyrics: [],
     currentLyric: '',
@@ -30,83 +32,48 @@ Page({
     const index = event.detail.current
     this.setData({currentPage: index})
   },
-  // 音乐播放/歌词控制
-  musicPlay(url) {
-    audioContent.stop()   
-    audioContent.src = url
-    // 监听加载资源完成
-    audioContent.onCanplay(() => {
-      audioContent.play()
-    })
-    // 获取当前播放时间
-    audioContent.onTimeUpdate(() => {
-      const currentTime = audioContent.currentTime * 1000
-      if(!this.data.isSliderChange) {
-        this.setData({currentTime})
-
-        // 处理歌词部分
-        const lyrics = this.data.lyrics
-        let i = 0
-        for (; i < lyrics.length; i++) {
-          const item = lyrics[i]
-          if(currentTime < item.time) {
-            break
-          }
-        }
-        const currentIndex = i - 1
-        // 设置当前歌词
-        if(this.data.currentIndex !== currentIndex) {
-          const currentLyric = lyrics[currentIndex].text
-          this.setData({currentIndex, currentLyric})
-        }
-      }
-    })
-    // 自然播放结束监听
-    audioContent.onEnded(() => {
-      this.setData({currentTime: this.data.totalTime})
-    })
-  },
   // ============= 滚动条事件监听 =============
-  onSliderclick(event) {   // slider点击
-    const seekTime = event.detail
+  onSliderClick(event) {   // slider点击
+    const seekTime = event.detail.value * this.data.totalTime / 100
     audioContent.pause()
     audioContent.seek(seekTime / 1000)
     audioContent.onSeeked(() => {
       audioContent.play()
     })
+    
     this.setData({currentTime: seekTime, isSliderChange: false})
   },
-  sliderChange(event) {   // slider滑动
-    this.setData({currentTime: event.detail})
+  onSliderChange(event) {   // slider滑动
+    const seekTime = event.detail.value * this.data.totalTime / 100
+    this.setData({currentTime: seekTime})
     this.data.isSliderChange = true
   },
-  // ============= 控制播放部分 =============
-  preClick() {
-    
-  },
-  nextClick() {
 
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { id } = options
-    // 获取歌曲播放链接
-    getMusicUrl(id).then(res => {
-      const url = res.data[0].url
-      this.musicPlay(url)
+    // 监听歌曲基本播放信息
+    const musicBasicInfo = ["currentData", "totalTime", "currentTime"]
+    playStore.onStates(musicBasicInfo, (res) => {
+      const { currentData, totalTime, currentTime } = res
+      if(currentData ) this.setData({currentData})
+      if(totalTime !== undefined) this.setData({totalTime})
+      if(currentTime !== undefined && !this.data.isSliderChange) {   
+        const sliderValue = currentTime / this.data.totalTime * 100
+        this.setData({currentTime, sliderValue})
+      }
     })
-    // 获取歌曲详情
-    getSongDetail(id).then(res => {
-      const detail = res.songs[0]
-      this.setData({currentData: detail, totalTime: detail.dt, currentLyric: detail.name})
-    })
-    // 获取歌曲歌词
-    getLyric(id).then(res => {
-      const lyric = res.lrc.lyric
-      const lyrics =  parseLyric(lyric)
-      this.setData({lyrics})
+    // 监听歌词
+    const lyricInfo = ["currentLyric", "lyrics", "currentIndex"]
+    playStore.onStates(lyricInfo, ({currentLyric, lyrics, currentIndex}) => {
+      if(currentLyric) this.setData({currentLyric})
+      if(lyrics?.length) this.setData({lyrics})
+      if(currentIndex !== undefined) this.setData({currentIndex})
     })
   },
+  onUnload() {
+  
+  }
 })

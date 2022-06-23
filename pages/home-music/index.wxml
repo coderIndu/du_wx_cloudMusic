@@ -8,7 +8,7 @@
 <!-- 推荐歌曲 -->
 <more-header bind:click="moreClick" data-id="hotMenu"></more-header>
 <block wx:for="{{hotMenu.tracks}}" wx:key="id">
-  <song-list-item item="{{item}}"></song-list-item>
+  <song-list-item bindtap="handleSongClick" data-index="{{index}}" item="{{item}}"></song-list-item>
 </block>
 <!-- 热门/推荐歌单 -->
 <song-menu item="{{hotPlayList}}" bind:click="songMenuClick"></song-menu>
@@ -18,3 +18,12 @@
 <block wx:for="{{listOfAll}}" wx:key="name">
   <top-list data="{{item}}" bind:tap="moreClick" data-id="{{index}}"></top-list>
 </block>
+<!-- 固定播放栏 -->
+<view class="fix-control" wx:if="{{currentData}}" >
+  <image class="icon cover-rotate  {{isPlayer ? 'startAnimation':'stopAnimation'}}" src="{{currentData.al.picUrl}}"></image>
+  <view class="sroll" bindtap="goToMusicDetail"><view class="font-scroll" wx:key="{{currentIndex}}">{{currentLyric}}</view></view>
+  <view class="handle">
+    <image bindtap="playClick" class="icon" src="/assets/images/music/{{isPlayer ? 'pause_icon': 'play_icon'}}.png"></image>
+    <image class="icon" src="/assets/images/music/playlist_icon.png"></image>
+  </view>
+</view>

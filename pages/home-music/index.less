@@ -1,0 +1,96 @@
+@import "/common/css/index.less";
+page {
+  padding: 0 20rpx;
+}
+
+
+.van-search {
+  padding: 20rpx 0 !important;
+  padding-top: 30rpx !important;
+}
+
+/* 轮播图样式 */
+.py-swiper {
+  width: 100%;
+  height: 320rpx;
+  margin-top: 10rpx;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+/* 控制栏 */
+.fix-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 44px;
+  padding: 5px 5px;
+  box-shadow: 0 0 1px rgba(0,0,0, .5);
+  box-sizing: border-box;
+  background-color: #fafafa;
+} 
+.fix-control .sroll {
+  flex: 1;
+  font-size: 26rpx;
+  text-align: center;
+  .one-line();
+}
+.fix-control > .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  top: -7px;
+}
+.fix-control .handle {
+  display: flex;
+  align-items: center;
+}
+.fix-control .handle .icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* 封面滚动动画 */
+@keyframes albumRotate {
+  from {
+    transform: rotate(0deg)
+  } 
+  to {
+    transform: rotate(360deg)
+  }
+}
+.cover-rotate {
+  animation: albumRotate 20s linear infinite;
+}
+// 暂停动画
+.stopAnimation {
+  animation-play-state: paused;
+}
+// 开始动画
+.startAnimation {
+  animation-play-state: running;
+}
+
+// 字体滚动
+@keyframes fontTrans {
+  from {
+    transform: translateX(40px);
+  }
+  to {
+    transform: translateX(-30px);
+  }
+}
+.font-scroll {
+  animation: fontTrans 3s linear 1s infinite alternate ;
+}
