@@ -21,7 +21,7 @@ Page({
     },      
     currentData: {},   // 当前播放歌曲
     currentLyric: '',  // 当前歌词
-    isPlayer: true,      // 歌曲播放状态
+    isPlaying: true,      // 歌曲播放状态
   },
 
   getData() {   // 获取数据
@@ -100,9 +100,10 @@ Page({
     store.onState('upMenu', this.handleListState('upMenu'))
   },
   onShow: function() {
-    playStore.onStates(['currentData', 'currentLyric'], ({currentData, currentLyric }) => {
+    playStore.onStates(['currentData', 'currentLyric', 'isPlaying'], ({currentData, currentLyric, isPlaying }) => {
       if(currentData) this.setData({currentData})
       if(currentLyric) this.setData({currentLyric})
+      if(isPlaying !== undefined) this.setData({isPlaying})
     })
   },
   // 事件处理
@@ -112,15 +113,9 @@ Page({
     playStore.dispatch("getSongListAction", {index, menu})
   },
   playClick() {   // 工具栏播放控制
-    let isPlayer = this.data.isPlayer
-    playStore.onStates(["isPlaying"], ({isPlaying}) => {
-      isPlayer = !isPlaying
-    })
-    this.setData({isPlayer})    // 设置状态图标
-    playStore.dispatch("onControlMusicAction", isPlayer)  // 控制播放
+    playStore.dispatch("onControlMusicAction", this.data.isPlaying)
   },
   goToMusicDetail() {   // 点击工具栏跳转到歌曲详情
-    console.log(2333);
     wx.navigateTo({
       url: '/pages/music-player/index',
     })

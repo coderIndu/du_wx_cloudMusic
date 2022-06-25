@@ -1,3 +1,5 @@
+import { playStore } from "./store/audio-player";
+
 // app.js
 console.log();
 App({
@@ -15,5 +17,4 @@ App({
   globalData: {
     statusBarHeight: 0,
   },
-
 })

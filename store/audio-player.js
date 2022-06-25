@@ -2,7 +2,8 @@ import { HYEventStore } from 'hy-event-store'
 import { getSongDetail, getMusicUrl, getLyric } from '../service/api_player'
 import { parseLyric } from '../utils/parseLyric'
 
-const audioContent = wx.createInnerAudioContext()
+// const audioContent = wx.createInnerAudioContext()
+const audioContent = wx.getBackgroundAudioManager()
 
 const playStore = new HYEventStore({
   state: {
@@ -39,6 +40,7 @@ const playStore = new HYEventStore({
         ctx.currentData = detail
         ctx.totalTime = detail.dt
         ctx.currentLyric = detail.name
+        audioContent.title = detail.name
       })
 
       // 获取歌曲歌词
@@ -51,26 +53,24 @@ const playStore = new HYEventStore({
       // 获取歌曲播放链接
       getMusicUrl(id).then(res => {
         ctx.musicUrl = res.data[0].url
-        audioContent.stop()  
+        if(audioContent.paused) audioContent.stop()  
         audioContent.src = ctx.musicUrl
+        audioContent.title = ctx.currentData.name
+        this.dispatch('onAudioContentListenerAction')
       })
 
-      // if(ctx.isFirstPlay) {
-        this.dispatch('onAudioContentListenerAction')
-        // ctx.isFirstPlay = false
-      // }
     },
     // 监听audioContent的事件
     onAudioContentListenerAction(ctx) {
       // 监听加载资源完成
       audioContent.onCanplay(() => {
+        audioContent.title = ctx.currentData.name
         audioContent.play()
       })
       // 获取当前播放时间
       audioContent.onTimeUpdate(() => {
         const currentTime = audioContent.currentTime * 1000
-        ctx.currentTime = currentTime
-
+        
         // 1. 处理歌词部分
         const lyrics = ctx.lyrics
         let i = 0
@@ -86,8 +86,15 @@ const playStore = new HYEventStore({
           const currentLyric = lyrics[currentIndex]?.text
           ctx.currentIndex = currentIndex
           ctx.currentLyric = currentLyric
+          ctx.currentTime = currentTime
         }
         
+      })
+      // 监听跳转完成
+      audioContent.onSeeked(() => {
+        setTimeout(() => {
+          audioContent.play()
+        }, 200);
       })
       // 自然播放结束监听
       audioContent.onEnded(() => {
@@ -96,14 +103,14 @@ const playStore = new HYEventStore({
       })
     },
     // 控制歌曲操作
-    onControlMusicAction(ctx, isplay = true) {
+    onControlMusicAction(ctx, isPlaying = true) {
       // 播放/暂停歌曲
-      isplay ? audioContent.play() : audioContent.pause()
-      ctx.isPlaying = isplay 
+      isPlaying ? audioContent.pause() : audioContent.play()
+      ctx.isPlaying = !isPlaying
     },
     // 初始化数据
     initStateAction(ctx) {
-      // 
+      // audioContent.offTimeUpdate()
       const newCtx = {
         currentTime: 0, 
         currentData: {},   // 歌曲数据
@@ -122,7 +129,6 @@ const playStore = new HYEventStore({
     },
     // 切换歌曲
     changeNewMusicAction(ctx, isNext = true) {
-      audioContent.offTimeUpdate()
       // 1. 获取下标
       let { songIndex: index, songList, playMode } = ctx
       const length = ctx.songList.length
@@ -149,7 +155,9 @@ const playStore = new HYEventStore({
     getSongListAction(ctx, {index, menu}) {
       ctx.songList = menu
       ctx.songIndex = index
-    }
+    },
+    // 后台播放
+
   }
 })
 

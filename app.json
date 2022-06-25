@@ -14,6 +14,7 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
+  "requiredBackgroundModes": ["audio"],
   "tabBar": {
     "list": [
       {

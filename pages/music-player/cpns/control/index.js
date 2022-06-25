@@ -1,5 +1,5 @@
 // pages/music-player/cpns/control/index.js
-import { playStore } from '../../../../store/audio-player'
+import { audioContent, playStore } from '../../../../store/audio-player'
 
 Component({
   /**
@@ -13,20 +13,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    playIcon: 'pause',   // 播放状态，默认播放
+    isPlaying: true,   // 播放状态，默认播放
     playMode: 'order',
     playModes: ['order', 'random','repeat'],    // 左侧播放模式
   },
-  lifetimes: {
-    ready() {
-      const { playIcon, playMode } = playStore.state
-      if(playIcon) this.setData({playIcon})
-      if(playMode) {
-        this.setData({playMode})
-      } else {
-        this.setData({playMode: this.data.playModes[0]}) // 默认order模式
-      }
-      playStore.setState("playMode", this.data.playMode)
+  pageLifetimes: {
+    show() {
+      playStore.onStates(["playMode", "isPlaying"], ({playMode, isPlaying}) => {
+        if(isPlaying!==undefined) this.setData({isPlaying})
+        if(playMode) {
+          this.setData({playMode})
+        } else {
+          this.setData({playMode: this.data.playModes[0]}) // 默认order模式
+        }
+        playStore.setState("playMode", this.data.playMode)
+      })
     }
   },
   /**
@@ -34,11 +35,7 @@ Component({
    */
   methods: {
     playClick() {   // 控制音乐播放
-      let playIcon = this.data.playIcon
-      playIcon === 'pause' ? playIcon = 'resume' : playIcon = 'pause'
-      playStore.setState("playIcon", playIcon)
-      playStore.dispatch("onControlMusicAction", playIcon === 'pause')
-      this.setData({playIcon})
+      playStore.dispatch("onControlMusicAction", this.data.isPlaying)
     },
     modeClick() {   // 歌曲播放模式
       const {playMode, playModes} = this.data
@@ -48,7 +45,6 @@ Component({
       }
       this.setData({playMode: playModes[index + 1]})
       playStore.setState("playMode", playModes[index + 1])
-      // playStore.dispatch("onControlMusicAction")
     },
     // ============= 控制播放部分 =============
     preClick() {

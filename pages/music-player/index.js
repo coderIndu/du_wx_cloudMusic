@@ -15,6 +15,7 @@ Page({
     totalTime: 0,
     isSliderChange: false,
     sliderValue: 0,
+    isClickSlider: false,
     // 歌词部分
     lyrics: [],
     currentLyric: '',
@@ -36,12 +37,12 @@ Page({
   onSliderClick(event) {   // slider点击
     const seekTime = event.detail.value * this.data.totalTime / 100
     audioContent.pause()
-    audioContent.seek(seekTime / 1000)
-    audioContent.onSeeked(() => {
-      audioContent.play()
-    })
-    
-    this.setData({currentTime: seekTime, isSliderChange: false})
+    audioContent.seek(seekTime  / 1000)
+    this.setData({sliderValue: event.detail.value, isSliderChange: false, isClickSlider: true})
+     // 监听跳转完成
+    setTimeout(() => {
+      this.setData({isClickSlider: false})
+    }, 200);
   },
   onSliderChange(event) {   // slider滑动
     const seekTime = event.detail.value * this.data.totalTime / 100
@@ -58,9 +59,10 @@ Page({
     const musicBasicInfo = ["currentData", "totalTime", "currentTime"]
     playStore.onStates(musicBasicInfo, (res) => {
       const { currentData, totalTime, currentTime } = res
+      console.log(this.data.isSliderChange, this.data.isClickSlider);
       if(currentData ) this.setData({currentData})
-      if(totalTime !== undefined) this.setData({totalTime})
-      if(currentTime !== undefined && !this.data.isSliderChange) {   
+      if(totalTime !== undefined) this.setData({totalTime}) 
+      if(currentTime !== undefined && !this.data.isSliderChange && !this.data.isClickSlider) {   
         const sliderValue = currentTime / this.data.totalTime * 100
         this.setData({currentTime, sliderValue})
       }
@@ -73,7 +75,4 @@ Page({
       if(currentIndex !== undefined) this.setData({currentIndex})
     })
   },
-  onUnload() {
-  
-  }
 })
