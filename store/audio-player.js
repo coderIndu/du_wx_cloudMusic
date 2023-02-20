@@ -70,7 +70,8 @@ const playStore = new HYEventStore({
       // 获取当前播放时间
       audioContent.onTimeUpdate(() => {
         const currentTime = audioContent.currentTime * 1000
-        
+
+        playStore.setState("currentTime", currentTime)
         // 1. 处理歌词部分
         const lyrics = ctx.lyrics
         let i = 0
@@ -94,7 +95,7 @@ const playStore = new HYEventStore({
       audioContent.onSeeked(() => {
         setTimeout(() => {
           audioContent.play()
-        }, 200);
+        }, 0);
       })
       // 自然播放结束监听
       audioContent.onEnded(() => {

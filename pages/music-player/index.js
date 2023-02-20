@@ -46,6 +46,7 @@ Page({
   },
   onSliderChange(event) {   // slider滑动
     const seekTime = event.detail.value * this.data.totalTime / 100
+    console.log("seekTime", seekTime);
     this.setData({currentTime: seekTime})
     this.data.isSliderChange = true
   },
@@ -59,11 +60,12 @@ Page({
     const musicBasicInfo = ["currentData", "totalTime", "currentTime"]
     playStore.onStates(musicBasicInfo, (res) => {
       const { currentData, totalTime, currentTime } = res
-      console.log(this.data.isSliderChange, this.data.isClickSlider);
+      // console.log(res);
       if(currentData ) this.setData({currentData})
       if(totalTime !== undefined) this.setData({totalTime}) 
       if(currentTime !== undefined && !this.data.isSliderChange && !this.data.isClickSlider) {   
         const sliderValue = currentTime / this.data.totalTime * 100
+        // console.log(this.data.totalTime)
         this.setData({currentTime, sliderValue})
       }
     })

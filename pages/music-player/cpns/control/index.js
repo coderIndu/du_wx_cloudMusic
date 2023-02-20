@@ -1,5 +1,5 @@
 // pages/music-player/cpns/control/index.js
-import { audioContent, playStore } from '../../../../store/audio-player'
+import { playStore } from '../../../../store/audio-player'
 
 Component({
   /**
