@@ -21,7 +21,7 @@
   </block>
   <!-- 固定播放栏 -->
   <view class="fix-control" wx:if="{{currentLyric}}" bindtap="goToMusicDetail">
-    <image class="icon cover-rotate  {{isPlayer ? 'startAnimation':'stopAnimation'}}" src="{{currentData.al.picUrl}}"></image>
+    <image class="icon cover-rotate  {{isPlaying ? 'startAnimation':'stopAnimation'}}" src="{{currentData.al.picUrl}}"></image>
     <view class="sroll"><view class="font-scroll" wx:key="{{currentIndex}}">{{currentLyric}}</view></view>
     <view class="handle">
       <image catchtap="playClick" class="icon" src="/assets/images/music/{{isPlaying ? 'pause_icon': 'play_icon'}}.png"></image>

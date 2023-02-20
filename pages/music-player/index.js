@@ -77,4 +77,6 @@ Page({
       if(currentIndex !== undefined) this.setData({currentIndex})
     })
   },
+
+
 })
